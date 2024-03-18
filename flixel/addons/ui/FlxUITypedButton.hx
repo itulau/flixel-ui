@@ -160,11 +160,11 @@ class FlxUITypedButton<T:FlxSprite> extends FlxTypedButton<T> implements IFlxUIB
 
 		_centerLabelOffset = FlxPoint.get(0, 0);
 
-		statusAnimations[3] = "normal_toggled";
-		statusAnimations[4] = "highlight_toggled";
-		statusAnimations[5] = "pressed_toggled";
+		statusAnimations[4] = "normal_toggled";
+		statusAnimations[5] = "highlight_toggled";
+		statusAnimations[6] = "pressed_toggled";
 
-		labelAlphas = [for (i in 0...3) 1];
+		labelAlphas = [for (i in 0...4) 1];
 
 		inputOver = new FlxInput(0);
 	}
@@ -173,9 +173,9 @@ class FlxUITypedButton<T:FlxSprite> extends FlxTypedButton<T> implements IFlxUIB
 	{
 		super.graphicLoaded();
 
-		setupAnimation("normal_toggled", 3);
-		setupAnimation("highlight_toggled", 4);
-		setupAnimation("pressed_toggled", 5);
+		setupAnimation("normal_toggled", 4);
+		setupAnimation("highlight_toggled", 5);
+		setupAnimation("pressed_toggled", 6);
 
 		if (_autoCleanup)
 		{
@@ -260,7 +260,7 @@ class FlxUITypedButton<T:FlxSprite> extends FlxTypedButton<T> implements IFlxUIB
 	}
 
 	/**
-	 * Set all 3 sets of labelOffsets at once
+	 * Set all 4 sets of labelOffsets at once
 	 */
 	public function setAllLabelOffsets(X:Float, Y:Float):Void
 	{
@@ -302,13 +302,13 @@ class FlxUITypedButton<T:FlxSprite> extends FlxTypedButton<T> implements IFlxUIB
 	}
 
 	/**
-	 * Offset the statusAnimations-index by 3 when toggled.
+	 * Offset the statusAnimations-index by 4 when toggled.
 	 */
 	override public function updateStatusAnimation():Void
 	{
 		if (has_toggle && toggled)
 		{
-			animation.play(statusAnimations[status + 3]);
+			animation.play(statusAnimations[status + 4]);
 		}
 		else
 		{
@@ -669,7 +669,7 @@ class FlxUITypedButton<T:FlxSprite> extends FlxTypedButton<T> implements IFlxUIB
 				slice9 = [FlxStringUtil.toIntArray(FlxUIAssets.SLICE9_BUTTON)];
 				temp = getBmp(assets[0]);
 				_src_w = Std.int(temp.width);
-				_src_h = Std.int(temp.height / 3); // calc default source width/height
+				_src_h = Std.int(temp.height / 4); // calc default source width/height
 			}
 			else
 			{
@@ -677,7 +677,7 @@ class FlxUITypedButton<T:FlxSprite> extends FlxTypedButton<T> implements IFlxUIB
 				slice9 = [FlxStringUtil.toIntArray(FlxUIAssets.SLICE9_BUTTON_TOGGLE)];
 				temp = getBmp(assets[0]);
 				_src_w = Std.int(temp.width);
-				_src_h = Std.int(temp.height / 6); // calc default source width/height
+				_src_h = Std.int(temp.height / 7); // calc default source width/height
 			}
 
 			temp = null;
